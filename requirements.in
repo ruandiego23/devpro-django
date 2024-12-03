@@ -1,0 +1,11 @@
+# requirements.in
+Django
+django-debug-toolbar
+environs
+flake8
+gunicorn
+pytest-django
+pytest-cov
+dj-database-url
+whitenoise
+psycopg[binary]
