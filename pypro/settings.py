@@ -88,7 +88,8 @@ if DEBUG:
 # https://docs.djangoproject.com/en/5.1/ref/settings/#databases
 
 # Parse database URLs, e.g.  "postgres://localhost:5432/mydb"
-DATABASES = {"default": env.dj_db_url("DATABASE_URL")}
+
+DATABASES = {"default": env.dj_db_url("DATABASE_URL", conn_max_age=600)}
 
 
 # Password validation

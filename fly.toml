@@ -28,6 +28,7 @@ release_command = 'python manage.py migrate --noinput'
   cpu_kind = 'shared'
   cpus = 1
 
-[[statics]]
-  guest_path = '/code/static'
-  url_prefix = '/static/'
+# Since I'm using whitnoise, I don't need that fly doesn't need to handle static files separately
+#[[statics]]
+#  guest_path = '/code/static'
+#  url_prefix = '/static/'
