@@ -1,5 +1,3 @@
-name: Django Devpro
-
 on:
   pull_request:
     branches:
@@ -7,7 +5,7 @@ on:
 
 jobs:
   ci:
-    name: Integration continuous
+    name: Devpro Integration Continuous
     runs-on: ubuntu-latest
     env:
       DATABASE_URL: postgres://devpro:devpro@postgres:5432/devpro
@@ -54,5 +52,3 @@ jobs:
       - uses: actions/checkout@v4
       - uses: superfly/flyctl-actions/setup-flyctl@master
       - run: flyctl deploy --remote-only
-        env:
-          FLY_API_TOKEN: ${{ secrets.FLY_API_TOKEN }}
