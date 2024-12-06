@@ -163,8 +163,3 @@ cython_debug/
 
 # PostgreSQL DB
 .pgdata
-
-# Static Files
-public
-staticfiles
-mediafiles
