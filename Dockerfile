@@ -5,24 +5,17 @@ FROM python:${PYTHON_VERSION}
 ENV PYTHONDONTWRITEBYTECODE 1
 ENV PYTHONUNBUFFERED 1
 
-# install psycopg2 dependencies.
-RUN apt-get update && apt-get install -y \
-    libpq-dev \
-    gcc \
-    && rm -rf /var/lib/apt/lists/*
+# RUN mkdir -p /app it doesn't need this command because the WORKDIR guarante that the directory /app already exists
+# WORKDIR is like mkdir && cd
+WORKDIR /app
 
-RUN mkdir -p /code
-
-WORKDIR /code
-
-COPY requirements.txt /tmp/requirements.txt
+COPY requirements.txt ./requirements.txt
 RUN set -ex && \
-    pip install --upgrade pip && \
-    pip install -r /tmp/requirements.txt && \
-    rm -rf /root/.cache/
-COPY . /code
+    pip install -U pip && \
+    pip install --no-cache-dir -r requirements.txt
+
+COPY . /app
 
 EXPOSE 8000
 
-CMD ["gunicorn", "pypro.wsgi:application", "--bind", "0.0.0.0:8000", "--workers", "4"]
-
+CMD ["gunicorn", "python manage.py collectstatic", "pypro.wsgi:application", "--bind", "0.0.0.0:8000", "--workers", "4"]
