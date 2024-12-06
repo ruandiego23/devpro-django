@@ -14,6 +14,7 @@ jobs:
       postgres:
         image: postgres
         env:
+          POSTGRES_HOST: localhost
           POSTGRES_PASSWORD: devpro
           POSTGRES_USER: devpro
           POSTGRES_DB: flypro

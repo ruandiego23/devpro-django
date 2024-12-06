@@ -5,7 +5,7 @@
 
 app = 'devpro-django'
 primary_region = 'gru'
-console_command = '/code/manage.py shell'
+console_command = '/app/manage.py shell'
 
 [build]
 
@@ -28,7 +28,7 @@ release_command = 'python manage.py migrate --noinput'
   cpu_kind = 'shared'
   cpus = 1
 
-# Since I'm using whitnoise, I don't need that fly doesn't need to handle static files separately
-#[[statics]]
-#  guest_path = '/code/static'
-#  url_prefix = '/static/'
+# Since I'm using whitnoise, I don't need the fly to handle static files separately
+[[statics]]
+  guest_path = '/app/public'
+  url_prefix = '/static/'

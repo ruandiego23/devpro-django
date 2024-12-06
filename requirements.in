@@ -7,5 +7,4 @@ gunicorn
 pytest-django
 pytest-cov
 dj-database-url
-whitenoise
 psycopg[binary]
