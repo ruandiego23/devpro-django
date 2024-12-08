@@ -1,16 +1,13 @@
-# fly.toml app configuration file generated for devpro-django on 2024-12-02T23:01:53-03:00
+# fly.toml app configuration file generated for devpro-django on 2024-12-06T23:25:51-03:00
 #
 # See https://fly.io/docs/reference/configuration/ for information about how to use this file.
 #
 
 app = 'devpro-django'
-primary_region = 'gru'
-console_command = '/app/manage.py shell'
+primary_region = 'gig'
+console_command = '/code/manage.py shell'
 
 [build]
-
-[deploy]
-release_command = 'python manage.py migrate --noinput'
 
 [env]
   PORT = '8000'
@@ -28,7 +25,6 @@ release_command = 'python manage.py migrate --noinput'
   cpu_kind = 'shared'
   cpus = 1
 
-# Since I'm using whitnoise, I don't need the fly to handle static files separately
 [[statics]]
-  guest_path = '/app/public'
-  url_prefix = '/static/'
+  guest_path = "/code/public"
+  url_prefix = "/static"
