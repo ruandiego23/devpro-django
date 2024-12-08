@@ -3,11 +3,7 @@
 name: Devpro Deploy
 
 on:
-  workflow_run:
-    workflows:
-      - Devpro Integration Continuous
-    types:
-      - completed
+  push:
     branches:
       - main
 
