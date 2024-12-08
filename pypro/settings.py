@@ -30,7 +30,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = env.str("SECRET_KEY")
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = env.bool("DEBUG", default=True)
+DEBUG = env.bool("DEBUG")
 
 ALLOWED_HOSTS = env.list("ALLOWED_HOSTS")
 
@@ -89,9 +89,7 @@ if DEBUG:
 
 # Parse database URLs, e.g.  "postgres://localhost:5432/mydb"
 
-default_db_url = 'sqlite:///' + os.path.join(BASE_DIR, 'db.sqlite3')
-
-DATABASES = {"default": env.dj_db_url("DATABASE_URL", default=default_db_url, conn_max_age=600)}
+DATABASES = {"default": env.dj_db_url("DATABASE_URL", conn_max_age=600)}
 
 
 # Password validation
@@ -129,10 +127,10 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/5.1/howto/static-files/
 
 STATIC_URL = 'static/'
-STATIC_ROOT = os.path.join(BASE_DIR, 'public/staticfiles')
+STATIC_ROOT = os.path.join(BASE_DIR, 'public')
 
 MEDIA_URL = 'media/'
-MEDIA_ROOT = os.path.join(BASE_DIR, 'public/mediafiles')
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
 
 # Default primary key field type

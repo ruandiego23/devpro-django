@@ -1,3 +1,4 @@
+name: Devpro Integration Continuous
 on:
   pull_request:
     branches:
@@ -5,7 +6,6 @@ on:
 
 jobs:
   ci:
-    name: Devpro Integration Continuous
     runs-on: ubuntu-latest
     env:
       DATABASE_URL: postgres://devpro:devpro@localhost:5432/flypro
@@ -44,15 +44,3 @@ jobs:
     - name: Test with pytest
       run: |
         pytest pypro --cov=pypro
-    
-  deploy:
-    name: Deploy
-    runs-on: ubuntu-latest
-    needs: ci
-    concurrency: deploy-group    # optional: ensure only one action runs at a time
-    env:
-      FLY_API_TOKEN: ${{ secrets.FLY_API_TOKEN }}
-    steps:
-      - uses: actions/checkout@v4
-      - uses: superfly/flyctl-actions/setup-flyctl@master
-      - run: flyctl deploy --remote-only
