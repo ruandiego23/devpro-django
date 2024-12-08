@@ -1,4 +1,3 @@
-name: Devpro Integration Continuous
 on:
   pull_request:
     branches:
@@ -6,6 +5,7 @@ on:
 
 jobs:
   ci:
+    name: Devpro Integration Continuous
     runs-on: ubuntu-latest
     env:
       DATABASE_URL: postgres://devpro:devpro@localhost:5432/flypro
