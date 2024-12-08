@@ -1,7 +1,5 @@
 # See https://fly.io/docs/app-guides/continuous-deployment-with-github-actions/
 
-name: Devpro Deploy
-
 on:
   workflow_run:
     workflows:
@@ -13,8 +11,8 @@ on:
 
 jobs:
   deploy:
+    name: Devpro Deploy
     runs-on: ubuntu-latest
-    concurrency: deploy-group    # optional: ensure only one action runs at a time
     env:
       FLY_API_TOKEN: ${{ secrets.FLY_API_TOKEN }}
     steps:
